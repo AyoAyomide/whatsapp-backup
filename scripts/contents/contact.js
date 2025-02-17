@@ -7,6 +7,8 @@ async function getContacts() {
     return chat;
 }
 
+
+
 class ContactExtractor {
     constructor() {
         this.extractedContacts = new Set();

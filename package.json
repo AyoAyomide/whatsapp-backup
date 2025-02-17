@@ -1,0 +1,16 @@
+{
+  "name": "whatsapp-backup",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "alpinejs": "^3.14.8",
+    "esbuild": "^0.25.0"
+  }
+}
