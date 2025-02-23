@@ -23,7 +23,7 @@ async function executeJob() {
             const tab = tabs[0];
             await chrome.scripting.executeScript({
                 target: { tabId: tab.id },
-                files: ['scripts/contents/demo.js']
+                files: ['scripts/contents/contact.js']
             });
         }
     } catch (error) {
