@@ -2,6 +2,8 @@ const ALARM_NAME = 'whatsapp-job';
 const WHATSAPP_URL = 'https://web.whatsapp.com/';
 const INTERVAL_IN_MINUTES = 1; // Setting to 1 minute for testing, change to 5 later
 
+
+
 // Setup the alarm
 async function setupAlarm() {
     const existingAlarm = await chrome.alarms.get(ALARM_NAME);
@@ -21,9 +23,12 @@ async function executeJob() {
 
         if (tabs.length > 0) {
             const tab = tabs[0];
+           
             await chrome.scripting.executeScript({
                 target: { tabId: tab.id },
-                files: ['scripts/contents/contact.js']
+                files: [
+                    'scripts/job/updateUnsaved.js'
+                ]
             });
         }
     } catch (error) {
