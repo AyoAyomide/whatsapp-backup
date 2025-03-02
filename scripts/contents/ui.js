@@ -47,7 +47,7 @@ class UI {
 
         if (!isExportButton) return;
 
-        exportContact();
+        exportContact(this.contactStore);
 
     }
 
@@ -64,7 +64,7 @@ class UI {
         </p>
         
         <p>${inputPrefix} ${inputSuffix}</p>
-        <a export-contact class="button primary">Export</a>
+        <button export-contact class="button primary">Export</button>
         `;
     }
 
