@@ -92,10 +92,8 @@ async function exportContact(contactStore) {
             files: [
                 './scripts/lib/idb.js',
                 './scripts/contents/export.js'
-            ]  // Path to your idb.js file
+            ]
         });
     }
 
 }
-
-

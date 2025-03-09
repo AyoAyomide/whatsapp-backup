@@ -1,4 +1,5 @@
-let { render, signal, component } = reef;
+const { render, signal, component } = reef;
+// const WHATSAPP_URL = 'https://web.whatsapp.com/';
 
 class UI {
     constructor() {
@@ -9,9 +10,7 @@ class UI {
             inputSuffix: "",
         });
         this.initializeComponent();
-        this.getContactSize();
     }
-
     getContactSize() {
 
         refreshContact();
@@ -68,11 +67,27 @@ class UI {
         `;
     }
 
-    initializeComponent() {
-        let app = document.querySelector('#app');
-        component(app, () => this.template());
-        app.addEventListener('input', this.watchInputEvent.bind(this));
-        app.addEventListener('click', this.watchClickEvent.bind(this));
+    templateDefault() {
+        return `
+                <div class="not-whatsapp-message">
+                    <p>This extension only works on WhatsApp Web.</p>
+                    <p>Please navigate to WhatsApp Web to use this extension.</p>
+                </div>
+            `;
+    }
+
+    async initializeComponent() {
+        const tabs = await chrome.tabs.query({ url: `${WHATSAPP_URL}*` });
+        console.log(tabs);
+        if (tabs.length > 0 && tabs[0].active) {
+            let app = document.querySelector('#app');
+            component(app, () => this.template());
+            app.addEventListener('input', this.watchInputEvent.bind(this));
+            app.addEventListener('click', this.watchClickEvent.bind(this));
+            this.getContactSize();
+        } else {
+            component(app, () => this.templateDefault());
+        }
     }
 }
 

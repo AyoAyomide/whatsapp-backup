@@ -20,7 +20,6 @@
         const unsavedContact = [...found];
 
         unsavedContact.forEach((item) => {
-            console.log(`${prefix}${(suffix)},${item}\n`);
             contactList.push(`${prefix}${(suffix)},${item}\n`);
             suffix++;
         })
